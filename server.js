@@ -44,17 +44,17 @@ app.post('/login', (req, res) => {
   res.redirect('/');
 });
 
-// Middleware de proteção: exige cookie
+// Arquivos estáticos do site (CSS, JS, assets)
+app.use(express.static(path.join(__dirname)));
+
+// Middleware de proteção: exige cookie para rotas principais
 app.use((req, res, next) => {
-  if (req.path.startsWith('/public/')) return next();
+  if (req.path.startsWith('/assets/')) return next(); // Permitir acesso às fotos
+  if (req.path.endsWith('.css') || req.path.endsWith('.js')) return next(); // Permitir CSS/JS
   if (req.cookies && req.cookies.auth === '1') return next();
   if (req.path === '/login') return next();
   return res.redirect('/login');
 });
-
-// Arquivos estáticos do site
-// Estruture suas fotos em ./assets e NÃO versione essa pasta no Git.
-app.use(express.static(path.join(__dirname)));
 
 // Rota para servir index.private.html como página principal
 app.get('/', (req, res) => {
