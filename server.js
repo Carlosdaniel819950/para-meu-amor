@@ -82,22 +82,42 @@ app.get('/logout', (req, res) => {
 
 // Página principal com fotos dinâmicas
 app.get('/', (req, res) => {
-  // Ler o HTML e substituir as URLs das fotos
-  let html = fs.readFileSync(path.join(__dirname, 'index.private.html'), 'utf8');
-  
-  // URLs das fotos do Imgur
-  const photoUrls = {
-    'assets/foto1.jpg': 'https://i.imgur.com/1awT3mv.jpg',
-    'assets/foto2.jpg': 'https://i.imgur.com/2tjfKHe.jpg', 
-    'assets/foto3.jpg': 'https://i.imgur.com/2tjfKHe.jpg'
-  };
-  
-  // Substituir as URLs no HTML
-  Object.entries(photoUrls).forEach(([oldUrl, newUrl]) => {
-    html = html.replace(new RegExp(oldUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newUrl);
-  });
-  
-  res.send(html);
+  res.send(`<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para meu amor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="hearts-container" aria-hidden="true"></div>
+
+    <main id="main-content" class="content" aria-label="Área principal">
+        <header class="topbar" aria-label="Barra superior">
+            <h2 class="page-heading">Nossas lembranças</h2>
+            <a href="/logout" class="logout-button" title="Sair">Sair</a>
+        </header>
+        <section class="gallery" aria-label="Galeria de fotos">
+            <img src="https://i.imgur.com/1awT3mv.jpg" alt="Foto 1" loading="lazy">
+            <img src="https://i.imgur.com/2tjfKHe.jpg" alt="Foto 2" loading="lazy">
+            <img src="https://i.imgur.com/2tjfKHe.jpg" alt="Foto 3" loading="lazy">
+        </section>
+        <section class="message" aria-label="Mensagem">
+            <div class="message-card">
+                <p>Nossas primeiras fotos juntos são uma lembrança que vou guardar com muito carinho.  Elas representam um sentimento puro, um amor e um cuidado que temos um pelo outro.  Espero que, com o tempo, a gente tire muitas outras — que cada uma delas traga boas memórias, risadas e momentos que realmente valham a pena lembrar.</p>
+                <p>Olhar pra essas fotos me faz perceber o quanto você é especial pra mim.  Elas me lembram que é você o meu motivo pra querer melhorar, pra buscar o meu melhor, mesmo que eu ainda sinta que não cheguei na minha melhor versão.</p>
+                <p>Eu te amo por um motivo que nem sei explicar.  Mesmo com pouco tempo juntos, esse sentimento é real, é sincero, e pra mim é isso que importa.  Às vezes o amor simplesmente acontece — e aconteceu com você.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>`);
 });
 
 // Arquivos estáticos
