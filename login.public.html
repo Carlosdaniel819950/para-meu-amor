@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Para meu amor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="hearts-container" aria-hidden="true"></div>
+
+    <section id="gate" class="gate" aria-label="Proteção por senha">
+        <div class="gate-card">
+            <h1 class="title">Para meu amor</h1>
+            <p class="subtitle">A senha é o dia que a gente se conheceu</p>
+            <form id="gate-form" class="gate-form" autocomplete="off">
+                <input id="gate-input" class="gate-input" type="password" placeholder="dd/mm/aaaa" aria-label="Senha" required>
+                <button type="submit" class="gate-button">Entrar</button>
+                <p id="gate-error" class="gate-error" role="alert" aria-live="assertive" hidden>Senha incorreta. Tente novamente.</p>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
