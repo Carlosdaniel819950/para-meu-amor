@@ -85,11 +85,11 @@ app.get('/', (req, res) => {
   // Ler o HTML e substituir as URLs das fotos
   let html = fs.readFileSync(path.join(__dirname, 'index.private.html'), 'utf8');
   
-  // URLs das fotos (substitua pelas suas URLs reais)
+  // URLs das fotos do Google Drive
   const photoUrls = {
-    'assets/foto1.jpg': 'https://via.placeholder.com/300x400/ff69b4/ffffff?text=Sua+Foto+1',
-    'assets/foto2.jpg': 'https://via.placeholder.com/300x400/ff69b4/ffffff?text=Sua+Foto+2', 
-    'assets/foto3.jpg': 'https://via.placeholder.com/300x400/ff69b4/ffffff?text=Sua+Foto+3'
+    'assets/foto1.jpg': 'https://drive.google.com/uc?id=13bq2eBuyK0RzZ7oopxbMjmYQL8GOgiTu',
+    'assets/foto2.jpg': 'https://drive.google.com/uc?id=11fcUJaErqMiszNbXdEzbGqtd0OVhAIB3', 
+    'assets/foto3.jpg': 'https://drive.google.com/uc?id=1SGuPfZOL-ducX_42-PHjAPCtsFMVXsiD'
   };
   
   // Substituir as URLs no HTML
