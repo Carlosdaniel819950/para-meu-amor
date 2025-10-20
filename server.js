@@ -52,9 +52,14 @@ app.use((req, res, next) => {
   return res.redirect('/login');
 });
 
-// Arquivos estáticos do site (index.private.html renomeado para index.html nesta pasta privada)
+// Arquivos estáticos do site
 // Estruture suas fotos em ./assets e NÃO versione essa pasta no Git.
 app.use(express.static(path.join(__dirname)));
+
+// Rota para servir index.private.html como página principal
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.private.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor no ar em http://localhost:${PORT}`);
