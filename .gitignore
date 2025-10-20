@@ -1,0 +1,17 @@
+# Ignorar imagens pessoais
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+
+# Arquivo privado local
+index.private.html
+server.local.md
+assets/
+node_modules/
+
+# Sistema/editores
+.DS_Store
+Thumbs.db
+node_modules/
