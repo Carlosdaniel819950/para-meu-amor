@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -79,9 +80,24 @@ app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-// Página principal
+// Página principal com fotos dinâmicas
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.private.html'));
+  // Ler o HTML e substituir as URLs das fotos
+  let html = fs.readFileSync(path.join(__dirname, 'index.private.html'), 'utf8');
+  
+  // URLs das fotos (substitua pelas suas URLs reais)
+  const photoUrls = {
+    'assets/foto1.jpg': 'https://via.placeholder.com/300x400/ff69b4/ffffff?text=Sua+Foto+1',
+    'assets/foto2.jpg': 'https://via.placeholder.com/300x400/ff69b4/ffffff?text=Sua+Foto+2', 
+    'assets/foto3.jpg': 'https://via.placeholder.com/300x400/ff69b4/ffffff?text=Sua+Foto+3'
+  };
+  
+  // Substituir as URLs no HTML
+  Object.entries(photoUrls).forEach(([oldUrl, newUrl]) => {
+    html = html.replace(new RegExp(oldUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newUrl);
+  });
+  
+  res.send(html);
 });
 
 // Arquivos estáticos
