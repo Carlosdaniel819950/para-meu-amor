@@ -119,6 +119,7 @@ body {
 .gallery, .message { max-width: 860px; margin: 0 auto; width: 100%; }
 
 .logout-button {
+  display: inline-block;
   padding: 8px 12px;
   border-radius: 10px;
   background: linear-gradient(135deg, #ff4d6d, #ff6b8a);
@@ -126,6 +127,7 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
   font-weight: 600;
   box-shadow: 0 6px 18px rgba(255,77,109,0.35);
+  text-decoration: none;
 }
 
 /* Galeria: 3 imagens lado a lado, quadradas e com corte central */

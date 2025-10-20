@@ -61,6 +61,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.private.html'));
 });
 
+// Rota para logout (limpar cookie)
+app.get('/logout', (req, res) => {
+  res.clearCookie('auth');
+  res.redirect('/login');
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor no ar em http://localhost:${PORT}`);
 });
