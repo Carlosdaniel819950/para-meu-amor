@@ -1,14 +1,14 @@
-# Ignorar imagens pessoais (comentado para permitir upload das fotos)
-# *.jpg
-# *.jpeg
-# *.png
-# *.webp
-# *.gif
+# Ignorar imagens pessoais
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
 
 # Arquivo privado local
-# index.private.html
+index.private.html
 server.local.md
-# assets/
+assets/
 node_modules/
 
 # Sistema/editores
